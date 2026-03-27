@@ -26,3 +26,5 @@ chroma_db/
 # OS
 .DS_Store
 Thumbs.db
+chroma_db_test/
+testppt/

@@ -1,7 +1,7 @@
 """解析器基类"""
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-from typing import List, Optional
+from typing import List, Optional, Union
 from pathlib import Path
 
 
@@ -17,7 +17,7 @@ class Document:
 class BaseParser(ABC):
     """文档解析器基类"""
 
-    def __init__(self, file_path: str | Path):
+    def __init__(self, file_path: Union[str, Path]):
         self.file_path = Path(file_path)
 
     @abstractmethod
