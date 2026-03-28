@@ -1,0 +1,7 @@
+{
+  "name": "qwen-ocr",
+  "version": "1.0.0",
+  "description": "Alibaba Cloud Qwen-VL OCR integration for high-quality text extraction from images",
+  "author": "Skill Creator",
+  "license": "Apache-2.0"
+}

@@ -13,7 +13,8 @@
 - LangChain - RAG 框架
 - Chroma - 向量数据库
 - OpenAI API - LLM & Embeddings
-- **PaddleOCR - 本地离线 OCR(支持 Mac GPU 加速)**
+- **阿里云 Qwen-VL OCR - 云端 OCR(效果顶尖，强烈推荐)**
+- ~~PaddleOCR~~ - 本地离线 OCR(可选，存在兼容性问题)
 
 ## 安装
 
@@ -21,36 +22,55 @@
 pip install -r requirements.txt
 ```
 
-### PaddleOCR 特别说明
+### OCR 识别 (推荐：阿里云 Qwen-VL)
 
-本项目集成了 **PaddleOCR PP-OCRv5** 轻量级 OCR 能力:
-- ✅ **纯本地离线运行**,无需联网
-- ✅ **自动调用 Mac GPU(Metal)** 加速 (M1/M2/M3/M4)
-- ✅ **中英文混合识别**,准确率 99%+
-- ✅ **倾斜文字自动修正**
+#### 🌟 推荐使用 - 阿里云 Qwen-VL OCR
 
-#### 首次使用配置模型 (可选，仅第一次需要)
+**优势:**
+- ✅ **识别效果业界顶尖** (qwen-vl-ocr-latest 模型)
+- ✅ **云端 GPU 加速**,速度快 (1-3 秒)
+- ✅ **无需本地模型**,不占资源
+- ✅ **支持复杂文档**、表格、公式、手写体
+- ✅ **与项目完美兼容**,无依赖冲突
+- ✅ **简洁的函数接口**,易于使用
 
+**快速开始:**
+
+1. **获取 API Key**: https://dashscope.console.aliyun.com/apiKey
+
+2. **配置环境变量**:
 ```bash
-# 方式 1: 自动下载默认模型 (首次运行时自动下载)
-python quick_ocr.py
+# 方式 1: 添加到 .env 文件
+DASHSCOPE_API_KEY=your-api-key-here
 
-# 方式 2: 手动下载 PP-OCRv5 最优模型到指定位置
-python -m src.parsers.paddleocr_model_manager ~/paddleocr_models
+# 方式 2: 终端临时设置
+export DASHSCOPE_API_KEY=your-api-key-here
 ```
 
-#### 使用 PaddleOCR
+3. **在代码中使用**:
+```python
+from src.utils import extract_text_from_image
 
-```bash
-# 快速识别图片文字
-python quick_ocr.py test.jpg
-
-# 使用本地离线模型
-python quick_ocr.py test.jpg ~/Desktop/paddle_ocr/models
-
-# 验证安装
-python -m scripts.verify_paddle_install
+# 一行代码搞定!
+text = extract_text_from_image('zuowen.jpg')
+print(text)
 ```
+
+4. **或使用命令行工具**:
+```bash
+python test_qwen_simple.py zuowen.jpg
+```
+
+**详细说明请查看**: [Qwen-VL OCR 使用指南](QWEN_VL_OCR_GUIDE.md)
+
+---
+
+#### 备选方案 - PaddleOCR (可选)
+
+> ⚠️ **注意**: PaddleOCR 在 Mac 上存在兼容性问题，可能导致段错误或内存占用过高。
+> 如无特殊需求，**强烈建议使用阿里云 Qwen-VL OCR**。
+
+如需使用 PaddleOCR，请参考：[PaddleOCR 使用指南](PADDLEOCR_GUIDE.md)
 
 ## 使用
 

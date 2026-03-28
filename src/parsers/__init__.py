@@ -5,6 +5,7 @@
 - DocxParser: 基于 python-docx 的 Word 文档解析
 - PPTXParser: 基于 python-pptx 的 PowerPoint 解析
 - DoclingParser: 基于 Docling 的 AI 智能解析 (推荐，支持多格式统一处理)
+- QwenVLOCRParser: 基于阿里云 Qwen-VL 的 OCR 识别 (效果顶尖，推荐)
 - PaddleOCRParser: 基于 PaddleOCR 的图片文字识别 (纯本地离线，GPU 加速)
 """
 from .base import BaseParser
@@ -27,4 +28,12 @@ try:
     __all__.extend(["PaddleOCRParser", "create_paddle_ocr_parser", "PaddleOCRModelManager", "quick_setup_models"])
 except ImportError:
     # PaddleOCR 未安装时不暴露
+    pass
+
+# 导入 Qwen-VL OCR Parser (推荐)
+try:
+    from .qwen_vl_ocr_parser import QwenVLOCRParser, create_qwen_vl_ocr_parser
+    __all__.extend(["QwenVLOCRParser", "create_qwen_vl_ocr_parser"])
+except ImportError:
+    # DashScope 未安装时不暴露
     pass

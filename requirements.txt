@@ -16,8 +16,11 @@ PyMuPDF>=1.23.0
 docling>=2.0.0  # 支持 PDF、DOCX、PPTX 统一解析
 
 # OCR - PaddleOCR (Mac 本地离线 OCR，支持 GPU 加速)
-paddlepaddle  # Mac 原生支持，M 系列自动调用 Metal GPU
-paddleocr     # PP-OCRv5 轻量级 OCR 模型
+# paddlepaddle  # Mac 原生支持，M 系列自动调用 Metal GPU
+# paddleocr     # PP-OCRv5 轻量级 OCR 模型
+
+# Cloud OCR - Alibaba DashScope (推荐，效果顶尖)
+dashscope>=1.20.0  # 阿里云通义千问 OCR 服务
 
 # Utilities
 python-dotenv>=1.0.0
